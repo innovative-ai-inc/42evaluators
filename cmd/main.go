@@ -64,7 +64,9 @@ func main() {
 		fmt.Fprintln(os.Stderr, "error creating a key manager:", err)
 		return
 	}
+	// TODO: modify to only use signle key
 	keys, err := api.DefaultKeysManager.GetKeys()
+	// keys, err := api.DefaultKeysManager.GetKey()
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "error getting API keys:", err)
 		return

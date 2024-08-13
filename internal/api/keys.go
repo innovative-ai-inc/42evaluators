@@ -95,6 +95,12 @@ func NewKeysManager(db *gorm.DB) (*KeysManager, error) {
 	return &session, nil
 }
 
+// TODO: implement this function
+func (manager *KeysManager) GetKey() ([]models.APIKey, error) {
+	var keys []models.APIKey
+	return keys, nil
+}
+
 func (manager *KeysManager) GetKeys() ([]models.APIKey, error) {
 	var keys []models.APIKey
 
@@ -225,7 +231,6 @@ func (manager *KeysManager) pullAuthenticityToken() error {
 
 	var ok bool
 	manager.authToken, ok = doc.Find("meta[name=csrf-token]").Attr("content")
-	// TODO: invalid response, expired credentials?
 	if !ok {
 		return fmt.Errorf("invalid response, expired credentials?")
 	}
