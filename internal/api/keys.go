@@ -223,8 +223,6 @@ func (manager *KeysManager) pullAuthenticityToken() error {
 		return err
 	}
 
-	println(doc.Find("meta[name=csrf-token]"))
-
 	var ok bool
 	manager.authToken, ok = doc.Find("meta[name=csrf-token]").Attr("content")
 	// TODO: invalid response, expired credentials?
